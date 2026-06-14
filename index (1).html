@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmad Khir Bin Abdul Muzil — e-Portfolio | TK2323 Mobile Application</title>
+<style>
+  :root {
+    --ink: #0B1F3A;
+    --ink-soft: #16335C;
+    --paper: #F6F4ED;
+    --paper-line: #E2DDCB;
+    --gold: #C7A24A;
+    --gold-bright: #E0BD6E;
+    --slate: #5C6B7A;
+    --good: #4D7C5F;
+    --max-w: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, .display {
+    font-family: 'Spectral', 'Source Serif Pro', Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .mono, .eyebrow, .meta, .tag, nav a, .btn, .footer-cols, .case-number {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  a { color: var(--ink-soft); }
+
+  img { max-width: 100%; display: block; }
+
+  /* ===== NAV ===== */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 3px solid var(--gold);
+  }
+  .nav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .nav-brand {
+    color: var(--paper);
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .nav-brand span { color: var(--gold-bright); }
+  nav.links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  nav.links a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+  nav.links a:hover { opacity: 1; border-color: var(--gold-bright); }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 72px 24px 56px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .case-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--gold);
+    color: var(--ink-soft);
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    background: rgba(199,162,74,0.08);
+  }
+  .case-stamp::before { content: "§"; color: var(--gold); font-weight: 700; font-size: 1rem; }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    margin: 0 0 8px;
+  }
+  .hero h1 .accent { color: var(--gold); font-style: italic; }
+  .hero .role {
+    font-size: 1.05rem;
+    color: var(--slate);
+    margin: 0 0 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .hero .intro {
+    font-size: 1.08rem;
+    max-width: 620px;
+    color: var(--ink-soft);
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0;
+    margin-top: 36px;
+    border-top: 1px solid var(--paper-line);
+  }
+  .meta-grid .cell {
+    padding: 16px 18px 16px 0;
+    border-right: 1px solid var(--paper-line);
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .meta-grid .cell:last-child { border-right: none; }
+  .meta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .meta-value { font-size: 0.98rem; color: var(--ink); font-weight: 600; }
+
+  .sdg-banner {
+    margin-top: 36px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 4px;
+    padding: 26px 28px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .sdg-banner::after {
+    content: "16";
+    position: absolute;
+    right: -10px;
+    top: -30px;
+    font-size: 9rem;
+    font-weight: 800;
+    color: rgba(224,189,110,0.08);
+    font-family: 'Spectral', serif;
+    line-height: 1;
+  }
+  .sdg-banner .sdg-mark {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--gold-bright);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--gold-bright);
+    flex-shrink: 0;
+  }
+  .sdg-banner h3 { color: var(--paper); margin: 0 0 6px; font-size: 1.15rem; }
+  .sdg-banner p { margin: 0; color: #C9D2E0; font-size: 0.92rem; max-width: 560px; }
+
+  /* ===== SECTION SHELL ===== */
+  section.block {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 64px 24px;
+    border-top: 1px solid var(--paper-line);
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--paper-line);
+  }
+  section.block h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 0 0 36px;
+  }
+
+  /* ===== LAB / PROJECT CARDS ===== */
+  .docket {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: #fff;
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  @media (min-width: 800px) {
+    .card { grid-template-columns: 380px 1fr; }
+    .card.reverse { grid-template-columns: 1fr 380px; }
+    .card.reverse .card-media { order: 2; }
+  }
+  .card-media {
+    background: var(--ink);
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+  }
+  .card-media .video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    max-height: 100%;
+    margin: auto;
+  }
+  .card-media iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  .card-body {
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-number {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    margin-bottom: 8px;
+  }
+  .card-body h3 { font-size: 1.35rem; margin: 0 0 12px; }
+  .card-body .reflection {
+    color: var(--slate);
+    font-size: 0.96rem;
+    margin: 12px 0 0;
+    padding-top: 14px;
+    border-top: 1px dashed var(--paper-line);
+  }
+  .card-body .reflection .rlabel {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ===== PROJECT CARD specifics ===== */
+  .project-card .card-body { gap: 14px; }
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0 4px;
+  }
+  .pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--paper-line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    background: var(--paper);
+  }
+  .problem-statement {
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border-left: 3px solid var(--gold);
+    padding: 12px 14px;
+    margin: 4px 0;
+  }
+  .card-actions { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 2px;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    transition: background 0.2s, color 0.2s;
+    font-weight: 600;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .btn.primary:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+  /* ===== REFLECTION SECTION ===== */
+  .reflection-block {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 4px;
+    padding: 44px;
+    position: relative;
+  }
+  .reflection-block::before {
+    content: "“";
+    font-family: 'Spectral', serif;
+    font-size: 6rem;
+    color: var(--gold);
+    position: absolute;
+    top: 6px;
+    left: 24px;
+    line-height: 1;
+    opacity: 0.6;
+  }
+  .reflection-block p {
+    font-size: 1.12rem;
+    max-width: 760px;
+    margin: 0;
+    padding-left: 28px;
+    color: #E6E9EE;
+  }
+  .reflection-block .signature {
+    margin-top: 24px;
+    padding-left: 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gold-bright);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .skill-chip {
+    border: 1px solid var(--paper-line);
+    background: #fff;
+    border-radius: 4px;
+    padding: 16px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-chip:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .skill-chip .num {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* ===== RESOURCES ===== */
+  .resource-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--paper-line);
+  }
+  .resource-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--paper-line);
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .resource-list .rtype {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .resource-list .rdesc { color: var(--ink-soft); font-size: 0.95rem; }
+  .resource-list .rdesc strong { color: var(--ink); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: #B9C2D0;
+    padding: 48px 24px 32px;
+    margin-top: 0;
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .footer-inner h4 { color: var(--paper); margin: 0; font-size: 1.1rem; }
+  .footer-cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 0.78rem;
+    color: #8E9BB0;
+    letter-spacing: 0.04em;
+  }
+  .footer-line {
+    border-top: 1px solid #233a5c;
+    padding-top: 18px;
+    font-size: 0.75rem;
+    color: #7E8CA3;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ===== UTIL ===== */
+  .skip-link {
+    position: absolute;
+    left: -999px;
+  }
+  .skip-link:focus {
+    left: 12px;
+    top: 12px;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 8px 14px;
+    z-index: 999;
+  }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .skill-chip { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">A209862 <span>/</span> e-Portfolio</div>
+    <nav class="links" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#labs">Labs</a>
+      <a href="#projects">Projects</a>
+      <a href="#reflection">Reflection</a>
+      <a href="#skills">Skills</a>
+      <a href="#resources">Resources</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero">
+    <div>
+      <div class="case-stamp">TK2323 — Mobile Application Programming</div>
+      <h1>Ahmad Khir Bin<br>Abdul Muzil<span class="accent">.</span></h1>
+      <p class="role">Matric A209862 — Building <strong>Tech&#8209;Savvy</strong>, a civic-reporting app for SDG&nbsp;16</p>
+      <p class="intro">
+        I'm a mobile application programming student documenting a semester of work that moved
+        from static screens to a connected, sensor-aware app. Each entry below is a checkpoint
+        in that journey — recorded, reflected on, and shipped to GitHub.
+      </p>
+
+      <div class="meta-grid">
+        <div class="cell">
+          <div class="meta-label">Programme</div>
+          <div class="meta-value">TK2323 Mobile Application</div>
+        </div>
+        <div class="cell">
+          <div class="meta-label">Instructor</div>
+          <div class="meta-value">Dr Nazatul Aini</div>
+        </div>
+        <div class="cell">
+          <div class="meta-label">Matric No.</div>
+          <div class="meta-value">A209862</div>
+        </div>
+        <div class="cell">
+          <div class="meta-label">App</div>
+          <div class="meta-value">Tech&#8209;Savvy</div>
+        </div>
+      </div>
+
+      <div class="sdg-banner">
+        <div class="sdg-mark">16</div>
+        <div>
+          <h3>SDG 16 — Peace, Justice and Strong Institutions</h3>
+          <p>
+            I chose SDG 16 because trust between citizens and local institutions starts with
+            being heard — Tech-Savvy gives ordinary people a direct, transparent channel to
+            report community issues and see them acted on.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LABS ============ -->
+  <section id="labs" class="block">
+    <div class="eyebrow">Lab Submissions — Lab 1 to Lab 5</div>
+    <h2>The Build-Up</h2>
+
+    <div class="docket">
+
+      <!-- Lab 1 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/55Uuzvr8A_8" title="Lab 1 - UI demo" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">LAB 01 / UI</div>
+          <h3>Foundations: Building the First Screens</h3>
+          <p class="reflection">
+            <span class="rlabel">Reflection</span>
+            This lab introduced me to Jetpack Compose's declarative approach to layout —
+            a real shift from the XML-based UI I expected. Getting spacing, colour, and
+            typography to feel intentional from the very first screen set the visual
+            language I carried through the rest of the project.
+          </p>
+        </div>
+      </article>
+
+      <!-- Lab 2 -->
+      <article class="card reverse">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/9B75UamGeu0" title="Lab 2 - Interaction demo" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">LAB 02 / INTERACTION</div>
+          <h3>Making It Respond</h3>
+          <p class="reflection">
+            <span class="rlabel">Reflection</span>
+            Adding state and click handling was where the app started to feel alive.
+            Working through <code>remember</code> and <code>mutableStateOf</code> taught
+            me how Compose recomposes the UI, which became essential later when wiring
+            ViewModel state across multiple screens.
+          </p>
+        </div>
+      </article>
+
+      <!-- Lab 3 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/Vwf-9cLDZ70" title="Lab 3 - Material Design demo" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">LAB 03 / MATERIAL DESIGN</div>
+          <h3>Giving the App a Voice</h3>
+          <p class="reflection">
+            <span class="rlabel">Reflection</span>
+            Material 3 components — cards, buttons, text fields — gave Tech-Savvy a
+            consistent design system instead of one-off styled boxes. This lab is where
+            the green-and-dark theme that now runs through every screen of the final
+            app was born.
+          </p>
+        </div>
+      </article>
+
+      <!-- Lab 4 -->
+      <article class="card reverse">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/d3rKdQDEpgE" title="Lab 4 - Navigation demo" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">LAB 04 / NAVIGATION</div>
+          <h3>Connecting the Screens</h3>
+          <p class="reflection">
+            <span class="rlabel">Reflection</span>
+            Navigation Compose turned a handful of disconnected screens into an actual
+            app. Defining routes as constants and passing a shared ViewModel through
+            <code>NavHost</code> became the backbone structure that every later feature
+            — Aduan, Berdekatan, Teduhan, Wira Bot — was built on top of.
+          </p>
+        </div>
+      </article>
+
+      <!-- Lab 5 -->
+      <article class="card">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/mmQtRPfVf-s" title="Lab 5 - Room demo" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">LAB 05 / ROOM DATABASE</div>
+          <h3>Making Data Permanent</h3>
+          <p class="reflection">
+            <span class="rlabel">Reflection</span>
+            This was the lab that changed everything underneath the hood. Moving aduan
+            data from an in-memory list to a Room database with DAO, Entity, and
+            Repository layers meant reports survive app restarts — a small change with
+            a big trust implication for a civic-reporting app.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="block">
+    <div class="eyebrow">Project Submissions</div>
+    <h2>The Case Files</h2>
+
+    <div class="docket">
+
+      <!-- Project 1 -->
+      <article class="card project-card">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/4OdXL7qXt4c" title="Project 1 VSR - Tech-Savvy" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">PROJECT 01 / LAB 4 + WORKING FEATURES</div>
+          <h3>Tech-Savvy — Foundation Release</h3>
+          <div class="project-meta">
+            <span class="pill">Jetpack Compose</span>
+            <span class="pill">Navigation</span>
+            <span class="pill">ViewModel</span>
+            <span class="pill">SDG 16</span>
+          </div>
+          <p class="problem-statement">
+            Citizens often have no simple, organised way to report local issues — complaints
+            are scattered, undocumented, and easy for institutions to lose track of.
+            Project 1 built the first working version of Tech-Savvy: a multi-screen app
+            for logging and tracking community complaints (aduan).
+          </p>
+          <p class="reflection">
+            <span class="rlabel">Lessons learned</span>
+            Sharing one ViewModel across five screens via Navigation Compose was the
+            biggest unlock — it meant the aduan list, profile, and reward points stayed
+            in sync everywhere. I also learned that good navigation structure early
+            saves a lot of refactoring later, which mattered a lot in Project 2.
+          </p>
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/a209862-eng/A209862_AhmadKhir_DrNazatulAini_Project1" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="card project-card reverse">
+        <div class="card-media">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/aaFO9VeXgXA" title="Project 2 VSR - Tech-Savvy" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="case-number">PROJECT 02 / LAB 5 + API + SENSORS + CLOUD</div>
+          <h3>Tech-Savvy — Connected Release</h3>
+          <div class="project-meta">
+            <span class="pill">Room Database</span>
+            <span class="pill">Firebase Firestore</span>
+            <span class="pill">GNews REST API</span>
+            <span class="pill">GPS Sensor</span>
+          </div>
+          <p class="problem-statement">
+            Project 1's aduan list lived only on one device, with no shared community
+            visibility, no live justice-related information, and no way to confirm
+            exactly where an issue was reported. Project 2 connects Tech-Savvy to the
+            outside world — locally, in the cloud, and on the map.
+          </p>
+          <p class="reflection">
+            <span class="rlabel">Lessons learned</span>
+            Wiring four pillars together — Room for personal records, Firestore for a
+            shared community feed, a live REST API for SDG 16 news, and GPS for accurate
+            location tagging — taught me how much "data persistence" actually means in
+            practice: knowing which data is private, which is shared, and which is
+            fetched fresh every time.
+          </p>
+          <div class="card-actions">
+            <a class="btn primary" href="https://github.com/a209862-eng/A209862_AhmadKhir_DrNazatulAini_Project2" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ REFLECTION ============ -->
+  <section id="reflection" class="block">
+    <div class="eyebrow">Reflection &amp; Learning Journey</div>
+    <h2>From First Screen to Connected App</h2>
+
+    <div class="reflection-block">
+      <p>
+        Looking back from Lab 1 to Project 2, the biggest shift wasn't technical — it was how
+        I started thinking about data. In Lab 1 I was just trying to get a button to look right.
+        By Project 2, every decision came back to a question of trust: where does this data
+        live, who can see it, and what happens if the network drops or a sensor is denied?
+        Working through Room, Firebase, a live REST API, and GPS for an SDG 16 app made that
+        question feel real rather than academic — a civic-reporting tool only works if people
+        believe their report actually went somewhere and will be acted on. That's the lesson
+        I'm carrying forward.
+      </p>
+      <div class="signature">— Ahmad Khir Bin Abdul Muzil, A209862</div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="block">
+    <div class="eyebrow">Skills &amp; Tech Stack</div>
+    <h2>Tools I Can Use Confidently</h2>
+
+    <div class="skills-grid">
+      <div class="skill-chip"><span class="num">01</span>Kotlin</div>
+      <div class="skill-chip"><span class="num">02</span>Jetpack Compose</div>
+      <div class="skill-chip"><span class="num">03</span>Material 3</div>
+      <div class="skill-chip"><span class="num">04</span>Navigation Compose</div>
+      <div class="skill-chip"><span class="num">05</span>ViewModel &amp; StateFlow</div>
+      <div class="skill-chip"><span class="num">06</span>Room Database</div>
+      <div class="skill-chip"><span class="num">07</span>Firebase Firestore</div>
+      <div class="skill-chip"><span class="num">08</span>REST APIs (GNews)</div>
+      <div class="skill-chip"><span class="num">09</span>Kotlin Coroutines</div>
+      <div class="skill-chip"><span class="num">10</span>FusedLocationProvider (GPS)</div>
+      <div class="skill-chip"><span class="num">11</span>Geocoder</div>
+      <div class="skill-chip"><span class="num">12</span>Git &amp; GitHub</div>
+    </div>
+  </section>
+
+  <!-- ============ RESOURCES ============ -->
+  <section id="resources" class="block">
+    <div class="eyebrow">Resources &amp; References</div>
+    <h2>What This Was Built With</h2>
+
+    <ul class="resource-list">
+      <li>
+        <span class="rtype">API</span>
+        <span class="rdesc"><strong>GNews REST API</strong> — used to fetch live news
+          articles related to justice, governance, and SDG 16 for the in-app news feed.</span>
+      </li>
+      <li>
+        <span class="rtype">Cloud</span>
+        <span class="rdesc"><strong>Firebase Firestore</strong> — real-time cloud database
+          for the community aduan (complaint) feed shared across users.</span>
+      </li>
+      <li>
+        <span class="rtype">Local DB</span>
+        <span class="rdesc"><strong>Room (AndroidX)</strong> — local persistence layer
+          for each user's personal aduan history.</span>
+      </li>
+      <li>
+        <span class="rtype">Sensor</span>
+        <span class="rdesc"><strong>Google Play Services Location (FusedLocationProvider)</strong>
+          + Android <strong>Geocoder</strong> — GPS sensor integration for location-tagged
+          reports.</span>
+      </li>
+      <li>
+        <span class="rtype">UI</span>
+        <span class="rdesc"><strong>Jetpack Compose / Material 3</strong> — declarative UI
+          toolkit and design system used throughout the app.</span>
+      </li>
+      <li>
+        <span class="rtype">AI Assistance</span>
+        <span class="rdesc">Portions of this app's UI scaffolding, Firebase/REST API/GPS
+          integration code, debugging guidance, and this e-Portfolio page were developed
+          with assistance from <strong>Claude (Anthropic)</strong>. All code was reviewed,
+          tested, and understood before submission.</span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Ahmad Khir Bin Abdul Muzil — A209862</h4>
+    <div class="footer-cols">
+      <span>TK2323 Mobile Application Programming</span>
+      <span>Instructor: Dr Nazatul Aini</span>
+      <span>SDG 16: Peace, Justice and Strong Institutions</span>
+      <span>App: Tech-Savvy</span>
+    </div>
+    <div class="footer-line">&copy; 2026 Ahmad Khir Bin Abdul Muzil. Built for TK2323 e-Portfolio submission.</div>
+  </div>
+</footer>
+
+</body>
+</html>
